@@ -1,5 +1,8 @@
 import "./App.css";
+
 import logo from "../images/logo.jpeg";
+import cakeImage from "../images/cake.jpeg";
+import cookieImage from "../images/scones.jpeg";
 import customImage from "../images/custom.jpeg";
 
 import {
@@ -36,8 +39,8 @@ function App() {
           />
 
           <div className="brand-name">
-            Bulelwa's Bakery
-            <span>& Confectionery</span>
+            <span className="brand-main">Bulelwa's Bakery</span>
+            <span className="brand-sub">&amp; Confectionery</span>
           </div>
         </div>
 
@@ -79,7 +82,7 @@ function App() {
 
           <p className="welcome-text">Welcome to</p>
 
-          <h1>Bulelwa's Bakery & Confectionery</h1>
+          <h1>Bulelwa's Bakery &amp; Confectionery</h1>
 
           <h2>Freshly Baked With Love</h2>
 
@@ -110,7 +113,7 @@ function App() {
           <h2>About Bulelwa's Bakery</h2>
 
           <p>
-            Bulelwa's Bakery & Confectionery is dedicated to providing
+            Bulelwa's Bakery &amp; Confectionery is dedicated to providing
             delicious, freshly baked treats made with care and attention to
             detail. From everyday treats to special celebrations, we create
             beautiful and tasty baked goods for every occasion.
@@ -133,20 +136,38 @@ function App() {
 
           <h2>What We Bake</h2>
 
-          <div className="products-container">
-            {/* Cakes */}
-            <div className="product-card">
-              <div className="product-icon">🎂</div>
+          <p className="products-intro">
+            Explore our delicious selection of freshly baked products.
+            Scroll horizontally to view all our products.
+          </p>
 
-              <h3>Cakes</h3>
+          {/* Horizontal Product Scroll */}
+          <div className="products-scroll">
 
-              <p>
-                Beautiful and delicious cakes for birthdays, celebrations and
-                special occasions.
-              </p>
+            {/* ================================
+                CAKES
+            ================================= */}
+            <div
+              className="product-card image-product-card cake-card"
+              style={{
+                backgroundImage: `url(${cakeImage})`,
+              }}
+            >
+              <div className="product-image-overlay">
+                <div className="product-text">
+                  <h3>Cakes</h3>
+
+                  <p>
+                    Beautiful and delicious cakes for birthdays, celebrations
+                    and special occasions.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Cupcakes */}
+            {/* ================================
+                CUPCAKES
+            ================================= */}
             <div className="product-card">
               <div className="product-icon">🧁</div>
 
@@ -158,19 +179,30 @@ function App() {
               </p>
             </div>
 
-            {/* Cookies */}
-            <div className="product-card">
-              <div className="product-icon">🍪</div>
+            {/* ================================
+                COOKIES
+            ================================= */}
+            <div
+              className="product-card image-product-card cookie-card"
+              style={{
+                backgroundImage: `url(${cookieImage})`,
+              }}
+            >
+              <div className="product-image-overlay">
+                <div className="product-text">
+                  <h3>Cookies</h3>
 
-              <h3>Cookies</h3>
-
-              <p>
-                Fresh and tasty cookies perfect for snacks, gifts and special
-                occasions.
-              </p>
+                  <p>
+                    Fresh and tasty cookies perfect for snacks, gifts and
+                    special occasions.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Biscuits */}
+            {/* ================================
+                BISCUITS
+            ================================= */}
             <div className="product-card">
               <div className="product-icon">🍪</div>
 
@@ -182,7 +214,9 @@ function App() {
               </p>
             </div>
 
-            {/* Muffins */}
+            {/* ================================
+                MUFFINS
+            ================================= */}
             <div className="product-card">
               <div className="product-icon">🧁</div>
 
@@ -194,23 +228,31 @@ function App() {
               </p>
             </div>
 
-            {/* Customised Pastries */}
+            {/* ================================
+                CUSTOMISED PASTRIES
+            ================================= */}
             <div
-              className="product-card customised-card"
+              className="product-card image-product-card customised-card"
               style={{
                 backgroundImage: `url(${customImage})`,
               }}
             >
-              <div className="product-overlay">
-                <h3>Customised Pastries</h3>
+              <div className="product-image-overlay">
+                <div className="product-text">
+                  <h3>Customised Pastries</h3>
 
-                <p>
-                  Specially designed pastries created according to your
-                  requirements and occasion.
-                </p>
+                  <p>
+                    Specially designed pastries created according to your
+                    requirements and occasion.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
+          <p className="scroll-hint">
+            ← Scroll horizontally to see more products →
+          </p>
         </div>
       </section>
 
@@ -285,8 +327,12 @@ function App() {
           <h2>Contact Us</h2>
 
           <div className="contact-container">
+
             {/* PHONE */}
-            <a href="tel:0645050305" className="contact-card clickable-card">
+            <a
+              href="tel:0645050305"
+              className="contact-card clickable-card"
+            >
               <div className="contact-icon">
                 <FaPhone />
               </div>
@@ -331,7 +377,9 @@ function App() {
 
               <h3>Email</h3>
 
-              <p>bulelwasbakeryconfectionery@gmail.com</p>
+              <p>
+                bulelwasbakeryconfectionery@gmail.com
+              </p>
 
               <span className="contact-action">
                 Send us an email
@@ -384,6 +432,7 @@ function App() {
                 06:00 - 14:30
               </p>
             </div>
+
           </div>
 
           {/* SOCIAL MEDIA */}
@@ -391,6 +440,7 @@ function App() {
             <h3>Follow Us</h3>
 
             <div className="social-links">
+
               {/* Instagram */}
               <a
                 href="https://www.instagram.com/bulelwas_bakery"
@@ -423,6 +473,7 @@ function App() {
                 <FaWhatsapp />
                 <span>WhatsApp</span>
               </a>
+
             </div>
           </div>
         </div>
@@ -439,12 +490,12 @@ function App() {
           />
         </div>
 
-        <h3>Bulelwa's Bakery & Confectionery</h3>
+        <h3>Bulelwa's Bakery &amp; Confectionery</h3>
 
         <p>Freshly Baked With Love</p>
 
         <p className="copyright">
-          © 2008 Bulelwa's Bakery & Confectionery. All Rights Reserved.
+          © 2008 Bulelwa's Bakery &amp; Confectionery. All Rights Reserved.
         </p>
       </footer>
     </div>

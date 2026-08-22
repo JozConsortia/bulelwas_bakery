@@ -69,26 +69,52 @@ img {
   border: 2px solid #b8860b;
 }
 
+/* ================================
+   BRAND TEXT
+================================ */
+
 .brand-name {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.1;
+}
+
+.brand-main {
+  display: block;
+
   color: #b8860b;
 
   font-size: 21px;
-  font-weight: bold;
+  font-weight: 700;
 
-  line-height: 1.2;
+  white-space: nowrap;
 }
 
-.brand-name span {
+.brand-sub {
   display: block;
 
-  color: #666666;
+  margin-top: 4px;
 
-  font-size: 15px;
-  font-weight: normal;
+  color: #555555;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  font-style: italic;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
 }
+
+/* ================================
+   NAVIGATION LINKS
+================================ */
 
 .nav-links {
   display: flex;
+
   align-items: center;
 
   gap: 28px;
@@ -100,6 +126,7 @@ img {
   color: #555555;
 
   font-size: 15px;
+
   font-weight: 600;
 
   transition: all 0.3s ease;
@@ -117,7 +144,9 @@ img {
   min-height: 88vh;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
@@ -133,11 +162,13 @@ img {
 
 .hero-content {
   width: 100%;
+
   max-width: 900px;
 }
 
 .hero-logo-container {
   display: flex;
+
   justify-content: center;
 
   margin-bottom: 25px;
@@ -145,6 +176,7 @@ img {
 
 .hero-logo {
   width: 140px;
+
   height: 140px;
 
   object-fit: cover;
@@ -219,6 +251,7 @@ img {
   display: inline-flex;
 
   justify-content: center;
+
   align-items: center;
 
   gap: 8px;
@@ -332,22 +365,84 @@ img {
 
 .products-section {
   background-color: #f3f3f3;
+
+  overflow: hidden;
 }
 
-.products-container {
-  margin-top: 45px;
+.products-intro {
+  max-width: 650px !important;
 
-  display: grid;
+  margin-left: auto !important;
 
-  grid-template-columns: repeat(3, 1fr);
+  margin-right: auto !important;
+
+  margin-bottom: 15px !important;
+}
+
+/* ================================
+   HORIZONTAL PRODUCT SCROLL
+================================ */
+
+.products-scroll {
+  display: flex;
 
   gap: 25px;
+
+  width: 100%;
+
+  margin-top: 35px;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  padding: 15px 5px 25px;
+
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #b8860b #dddddd;
 }
+
+/* Chrome / Edge / Safari scrollbar */
+
+.products-scroll::-webkit-scrollbar {
+  height: 9px;
+}
+
+.products-scroll::-webkit-scrollbar-track {
+  background-color: #dddddd;
+
+  border-radius: 10px;
+}
+
+.products-scroll::-webkit-scrollbar-thumb {
+  background-color: #b8860b;
+
+  border-radius: 10px;
+}
+
+.products-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #8f6808;
+}
+
+/* ================================
+   PRODUCT CARD
+================================ */
 
 .product-card {
   position: relative;
 
-  min-height: 260px;
+  flex: 0 0 100%;
+
+  width: 100%;
+
+  min-height: 400px;
 
   display: flex;
 
@@ -361,61 +456,59 @@ img {
 
   background-color: #ffffff;
 
-  padding: 35px 25px;
+  padding: 50px 70px;
 
-  border-radius: 12px;
+  border-radius: 18px;
 
   border: 1px solid #dddddd;
 
   overflow: hidden;
 
+  scroll-snap-align: center;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
   transition: all 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-
   border-color: #b8860b;
 
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
 .product-icon {
-  font-size: 42px;
+  font-size: 80px;
 
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .product-card h3 {
-  font-size: 23px;
+  font-size: 34px;
 
   color: #b8860b;
 
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .product-card p {
-  font-size: 15px;
+  max-width: 650px;
+
+  font-size: 18px;
 
   color: #666666;
 
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ================================
-   CUSTOMISED PASTRIES
+   IMAGE PRODUCT CARDS
 ================================ */
 
-.customised-card {
-  min-height: 260px;
-
+.image-product-card {
   padding: 0;
 
-  display: flex;
-
-  align-items: flex-end;
-
-  justify-content: center;
+  justify-content: flex-end;
 
   background-size: cover;
 
@@ -424,36 +517,50 @@ img {
   background-repeat: no-repeat;
 
   overflow: hidden;
-
-  border: none;
 }
 
-.customised-card::before {
+/* Image dark overlay */
+
+.image-product-card::before {
   content: "";
 
   position: absolute;
 
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.20);
-
-  transition: background 0.3s ease;
+  background: rgba(0, 0, 0, 0.18);
 
   z-index: 1;
+
+  transition: background 0.3s ease;
 }
 
-.customised-card:hover::before {
-  background: rgba(0, 0, 0, 0.35);
+.image-product-card:hover::before {
+  background: rgba(0, 0, 0, 0.32);
 }
 
-.product-overlay {
+/* Text area over image */
+
+.product-image-overlay {
   position: relative;
 
   z-index: 2;
 
   width: 100%;
 
-  padding: 60px 20px 25px;
+  min-height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 100px 70px 45px;
 
   background: linear-gradient(
     to top,
@@ -465,20 +572,64 @@ img {
   color: #ffffff;
 }
 
-.customised-card .product-overlay h3 {
-  color: #ffffff;
+.product-text {
+  width: 100%;
 
-  font-size: 23px;
-
-  margin-bottom: 10px;
+  max-width: 750px;
 }
 
-.customised-card .product-overlay p {
+.image-product-card .product-text h3 {
   color: #ffffff;
 
-  font-size: 15px;
+  font-size: 36px;
 
-  line-height: 1.5;
+  margin-bottom: 15px;
+
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-product-card .product-text p {
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================
+   SPECIFIC IMAGE POSITIONING
+================================ */
+
+.cake-card {
+  background-position: center center;
+}
+
+.cookie-card {
+  background-position: center center;
+}
+
+.customised-card {
+  background-position: center center;
+}
+
+/* ================================
+   SCROLL INSTRUCTION
+================================ */
+
+.scroll-hint {
+  margin-top: 12px !important;
+
+  color: #888888 !important;
+
+  font-size: 14px !important;
+
+  font-style: italic;
 }
 
 /* ================================
@@ -750,26 +901,12 @@ footer p {
 }
 
 /* ================================
-   RESPONSIVE DESIGN
+   TABLET
 ================================ */
 
 @media (max-width: 1100px) {
   .contact-container {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1000px) {
-  .navbar {
-    padding: 15px 4%;
-  }
-
-  .nav-links {
-    gap: 18px;
-  }
-
-  .products-container {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -817,7 +954,41 @@ footer p {
   .contact-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .product-card {
+    min-height: 360px;
+
+    padding: 40px 55px;
+  }
+
+  .product-icon {
+    font-size: 65px;
+  }
+
+  .product-card h3 {
+    font-size: 30px;
+  }
+
+  .product-card p {
+    font-size: 16px;
+  }
+
+  .product-image-overlay {
+    padding: 80px 50px 35px;
+  }
+
+  .image-product-card .product-text h3 {
+    font-size: 30px;
+  }
+
+  .image-product-card .product-text p {
+    font-size: 16px;
+  }
 }
+
+/* ================================
+   MOBILE
+================================ */
 
 @media (max-width: 600px) {
   .navbar {
@@ -831,11 +1002,17 @@ footer p {
   }
 
   .brand-name {
+    align-items: flex-start;
+  }
+
+  .brand-main {
     font-size: 18px;
   }
 
-  .brand-name span {
+  .brand-sub {
     font-size: 13px;
+
+    margin-top: 3px;
   }
 
   .nav-links {
@@ -884,8 +1061,62 @@ footer p {
     font-size: 30px;
   }
 
-  .products-container {
-    grid-template-columns: 1fr;
+  /* Horizontal products on mobile */
+
+  .products-scroll {
+    gap: 15px;
+
+    padding-left: 0;
+
+    padding-right: 0;
+  }
+
+  .product-card {
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    min-height: 330px;
+
+    padding: 35px 30px;
+
+    border-radius: 14px;
+  }
+
+  .product-icon {
+    font-size: 58px;
+
+    margin-bottom: 15px;
+  }
+
+  .product-card h3 {
+    font-size: 27px;
+  }
+
+  .product-card p {
+    font-size: 15px;
+  }
+
+  .image-product-card {
+    min-height: 330px;
+  }
+
+  .product-image-overlay {
+    padding: 75px 25px 30px;
+  }
+
+  .image-product-card .product-text h3 {
+    font-size: 27px;
+  }
+
+  .image-product-card .product-text p {
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .scroll-hint {
+    font-size: 13px !important;
   }
 
   .contact-container {
@@ -910,9 +1141,5 @@ footer p {
     width: 210px;
 
     text-align: center;
-  }
-
-  .customised-card {
-    min-height: 280px;
   }
 }
