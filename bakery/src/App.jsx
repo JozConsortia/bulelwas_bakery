@@ -1,7 +1,27 @@
 import "./App.css";
 import logo from "../images/logo.jpeg";
+import customImage from "../images/custom.jpeg";
+
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebook,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+} from "react-icons/fa";
 
 function App() {
+  // Bakery address
+  const bakeryAddress =
+    "1484/17 Saint John Road, Debonair Park, The Evaton Estates, 1984";
+
+  // Google Maps directions link
+  const locationUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    bakeryAddress
+  )}`;
+
   return (
     <div>
       {/* ================================
@@ -114,58 +134,81 @@ function App() {
           <h2>What We Bake</h2>
 
           <div className="products-container">
+            {/* Cakes */}
             <div className="product-card">
               <div className="product-icon">🎂</div>
+
               <h3>Cakes</h3>
+
               <p>
                 Beautiful and delicious cakes for birthdays, celebrations and
                 special occasions.
               </p>
             </div>
 
+            {/* Cupcakes */}
             <div className="product-card">
               <div className="product-icon">🧁</div>
+
               <h3>Cupcakes</h3>
+
               <p>
                 Delicious cupcakes prepared with different flavours and
                 beautiful designs.
               </p>
             </div>
 
+            {/* Cookies */}
             <div className="product-card">
               <div className="product-icon">🍪</div>
+
               <h3>Cookies</h3>
+
               <p>
                 Fresh and tasty cookies perfect for snacks, gifts and special
                 occasions.
               </p>
             </div>
 
+            {/* Biscuits */}
             <div className="product-card">
               <div className="product-icon">🍪</div>
+
               <h3>Biscuits</h3>
+
               <p>
                 Crunchy and delicious biscuits made with care and quality
                 ingredients.
               </p>
             </div>
 
+            {/* Muffins */}
             <div className="product-card">
               <div className="product-icon">🧁</div>
+
               <h3>Muffins</h3>
+
               <p>
                 Soft and freshly baked muffins that are perfect for breakfast
                 or a quick treat.
               </p>
             </div>
 
-            <div className="product-card">
-              <div className="product-icon">✨</div>
-              <h3>Customised Pastries</h3>
-              <p>
-                Specially designed pastries created according to your
-                requirements and occasion.
-              </p>
+            {/* Customised Pastries */}
+            <div
+              className="product-card customised-card"
+              style={{
+                backgroundImage: `url(${customImage})`,
+              }}
+            >
+              <div className="product-overlay">
+                <h3>Customised Pastries</h3>
+
+                <p>
+                  Specially designed pastries created according to your
+                  requirements and occasion.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -186,23 +229,29 @@ function App() {
           </p>
 
           <div className="order-buttons">
+            {/* WhatsApp */}
             <a
               href="https://wa.me/27645050305"
               target="_blank"
               rel="noreferrer"
               className="btn"
             >
+              <FaWhatsapp className="button-icon" />
               WhatsApp
             </a>
 
+            {/* Phone */}
             <a href="tel:0645050305" className="btn">
+              <FaPhone className="button-icon" />
               Call Us
             </a>
 
+            {/* Email */}
             <a
               href="mailto:bulelwasbakeryconfectionery@gmail.com"
               className="btn"
             >
+              <FaEnvelope className="button-icon" />
               Send Email
             </a>
           </div>
@@ -210,6 +259,7 @@ function App() {
           <div className="order-information">
             <div className="info-box">
               <h3>Delivery</h3>
+
               <p>
                 Delivery is available for customised pastries. Delivery fees
                 depend on the distance.
@@ -218,6 +268,7 @@ function App() {
 
             <div className="info-box">
               <h3>Payment Methods</h3>
+
               <p>Cash and EFT are accepted.</p>
             </div>
           </div>
@@ -234,29 +285,72 @@ function App() {
           <h2>Contact Us</h2>
 
           <div className="contact-container">
-            <div className="contact-card">
-              <h3>Phone / WhatsApp</h3>
+            {/* PHONE */}
+            <a href="tel:0645050305" className="contact-card clickable-card">
+              <div className="contact-icon">
+                <FaPhone />
+              </div>
+
+              <h3>Phone</h3>
+
               <p>064 505 0305</p>
 
-              <a href="tel:0645050305" className="contact-link">
-                Call Now
-              </a>
-            </div>
+              <span className="contact-action">
+                Tap to call
+              </span>
+            </a>
 
-            <div className="contact-card">
+            {/* WHATSAPP */}
+            <a
+              href="https://wa.me/27645050305"
+              target="_blank"
+              rel="noreferrer"
+              className="contact-card clickable-card"
+            >
+              <div className="contact-icon whatsapp-icon">
+                <FaWhatsapp />
+              </div>
+
+              <h3>WhatsApp</h3>
+
+              <p>064 505 0305</p>
+
+              <span className="contact-action">
+                Chat with us
+              </span>
+            </a>
+
+            {/* EMAIL */}
+            <a
+              href="mailto:bulelwasbakeryconfectionery@gmail.com"
+              className="contact-card clickable-card"
+            >
+              <div className="contact-icon">
+                <FaEnvelope />
+              </div>
+
               <h3>Email</h3>
+
               <p>bulelwasbakeryconfectionery@gmail.com</p>
 
-              <a
-                href="mailto:bulelwasbakeryconfectionery@gmail.com"
-                className="contact-link"
-              >
-                Email Us
-              </a>
-            </div>
+              <span className="contact-action">
+                Send us an email
+              </span>
+            </a>
 
-            <div className="contact-card">
-              <h3>Address</h3>
+            {/* LOCATION */}
+            <a
+              href={locationUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-card clickable-card"
+            >
+              <div className="contact-icon location-icon">
+                <FaMapMarkerAlt />
+              </div>
+
+              <h3>Location</h3>
+
               <p>
                 1484/17 Saint John Road,
                 <br />
@@ -264,10 +358,20 @@ function App() {
                 <br />
                 The Evaton Estates, 1984
               </p>
-            </div>
 
+              <span className="contact-action">
+                Get Directions
+              </span>
+            </a>
+
+            {/* OPENING HOURS */}
             <div className="contact-card">
+              <div className="contact-icon">
+                <FaClock />
+              </div>
+
               <h3>Opening Hours</h3>
+
               <p>
                 Monday - Friday
                 <br />
@@ -282,24 +386,42 @@ function App() {
             </div>
           </div>
 
+          {/* SOCIAL MEDIA */}
           <div className="social-section">
             <h3>Follow Us</h3>
 
             <div className="social-links">
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/bulelwas_bakery"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Visit our Instagram page"
               >
-                Instagram
+                <FaInstagram />
+                <span>Instagram</span>
               </a>
 
+              {/* Facebook */}
               <a
                 href="https://www.facebook.com/share/1EhoaTEb7L/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Visit our Facebook page"
               >
-                Facebook
+                <FaFacebook />
+                <span>Facebook</span>
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/27645050305"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Contact us on WhatsApp"
+              >
+                <FaWhatsapp />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
