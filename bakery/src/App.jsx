@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import "./App.css";
 
 import logo from "../images/logo.jpeg";
@@ -13,17 +14,57 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaClock,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 
 function App() {
-  // Bakery address
+  // ================================
+  // BAKERY ADDRESS
+  // ================================
+
   const bakeryAddress =
     "1484/17 Saint John Road, Debonair Park, The Evaton Estates, 1984";
 
-  // Google Maps directions link
+  // ================================
+  // GOOGLE MAPS DIRECTIONS
+  // ================================
+
   const locationUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
     bakeryAddress
   )}`;
+
+  // ================================
+  // PRODUCT SCROLL REFERENCE
+  // ================================
+
+  const productsRef = useRef(null);
+
+  // ================================
+  // SCROLL TO NEXT PRODUCT
+  // ================================
+
+  const scrollNext = () => {
+    if (productsRef.current) {
+      productsRef.current.scrollBy({
+        left: productsRef.current.clientWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // ================================
+  // SCROLL TO PREVIOUS PRODUCT
+  // ================================
+
+  const scrollPrevious = () => {
+    if (productsRef.current) {
+      productsRef.current.scrollBy({
+        left: -productsRef.current.clientWidth,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div>
@@ -40,7 +81,10 @@ function App() {
 
           <div className="brand-name">
             <span className="brand-main">Bulelwa's Bakery</span>
-            <span className="brand-sub">&amp; Confectionery</span>
+
+            <span className="brand-sub">
+              &amp; Confectionery
+            </span>
           </div>
         </div>
 
@@ -138,120 +182,151 @@ function App() {
 
           <p className="products-intro">
             Explore our delicious selection of freshly baked products.
-            Scroll horizontally to view all our products.
           </p>
 
-          {/* Horizontal Product Scroll */}
-          <div className="products-scroll">
+          {/* ================================
+              PRODUCT NAVIGATION AREA
+          ================================= */}
+          <div className="product-navigation">
+
+            {/* LEFT ARROW */}
+            <button
+              type="button"
+              className="product-nav-button"
+              onClick={scrollPrevious}
+              aria-label="Previous product"
+              title="Previous product"
+            >
+              <FaChevronLeft />
+            </button>
 
             {/* ================================
-                CAKES
+                PRODUCT SCROLL CONTAINER
             ================================= */}
             <div
-              className="product-card image-product-card cake-card"
-              style={{
-                backgroundImage: `url(${cakeImage})`,
-              }}
+              className="products-scroll"
+              ref={productsRef}
             >
-              <div className="product-image-overlay">
-                <div className="product-text">
-                  <h3>Cakes</h3>
+              {/* CAKES */}
+              <div
+                className="product-card image-product-card cake-card"
+                style={{
+                  backgroundImage: `url(${cakeImage})`,
+                }}
+              >
+                <div className="product-image-overlay">
+                  <div className="product-text">
+                    <span className="product-label">
+                      OUR SPECIALTY
+                    </span>
 
-                  <p>
-                    Beautiful and delicious cakes for birthdays, celebrations
-                    and special occasions.
-                  </p>
+                    <h3>Cakes</h3>
+
+                    <p>
+                      Beautiful and delicious cakes for birthdays,
+                      celebrations and special occasions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CUPCAKES */}
+              <div className="product-card">
+                <div className="product-icon">🧁</div>
+
+                <h3>Cupcakes</h3>
+
+                <p>
+                  Delicious cupcakes prepared with different flavours
+                  and beautiful designs.
+                </p>
+              </div>
+
+              {/* COOKIES */}
+              <div
+                className="product-card image-product-card cookie-card"
+                style={{
+                  backgroundImage: `url(${cookieImage})`,
+                }}
+              >
+                <div className="product-image-overlay">
+                  <div className="product-text">
+                    <span className="product-label">
+                      FRESHLY BAKED
+                    </span>
+
+                    <h3>Cookies</h3>
+
+                    <p>
+                      Fresh and tasty cookies perfect for snacks,
+                      gifts and special occasions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* BISCUITS */}
+              <div className="product-card">
+                <div className="product-icon">🍪</div>
+
+                <h3>Biscuits</h3>
+
+                <p>
+                  Crunchy and delicious biscuits made with care and
+                  quality ingredients.
+                </p>
+              </div>
+
+              {/* MUFFINS */}
+              <div className="product-card">
+                <div className="product-icon">🧁</div>
+
+                <h3>Muffins</h3>
+
+                <p>
+                  Soft and freshly baked muffins that are perfect for
+                  breakfast or a quick treat.
+                </p>
+              </div>
+
+              {/* CUSTOMISED PASTRIES */}
+              <div
+                className="product-card image-product-card customised-card"
+                style={{
+                  backgroundImage: `url(${customImage})`,
+                }}
+              >
+                <div className="product-image-overlay">
+                  <div className="product-text">
+                    <span className="product-label">
+                      MADE FOR YOU
+                    </span>
+
+                    <h3>Customised Pastries</h3>
+
+                    <p>
+                      Specially designed pastries created according to
+                      your requirements and occasion.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* ================================
-                CUPCAKES
-            ================================= */}
-            <div className="product-card">
-              <div className="product-icon">🧁</div>
-
-              <h3>Cupcakes</h3>
-
-              <p>
-                Delicious cupcakes prepared with different flavours and
-                beautiful designs.
-              </p>
-            </div>
-
-            {/* ================================
-                COOKIES
-            ================================= */}
-            <div
-              className="product-card image-product-card cookie-card"
-              style={{
-                backgroundImage: `url(${cookieImage})`,
-              }}
+            {/* RIGHT ARROW */}
+            <button
+              type="button"
+              className="product-nav-button"
+              onClick={scrollNext}
+              aria-label="Next product"
+              title="Next product"
             >
-              <div className="product-image-overlay">
-                <div className="product-text">
-                  <h3>Cookies</h3>
-
-                  <p>
-                    Fresh and tasty cookies perfect for snacks, gifts and
-                    special occasions.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* ================================
-                BISCUITS
-            ================================= */}
-            <div className="product-card">
-              <div className="product-icon">🍪</div>
-
-              <h3>Biscuits</h3>
-
-              <p>
-                Crunchy and delicious biscuits made with care and quality
-                ingredients.
-              </p>
-            </div>
-
-            {/* ================================
-                MUFFINS
-            ================================= */}
-            <div className="product-card">
-              <div className="product-icon">🧁</div>
-
-              <h3>Muffins</h3>
-
-              <p>
-                Soft and freshly baked muffins that are perfect for breakfast
-                or a quick treat.
-              </p>
-            </div>
-
-            {/* ================================
-                CUSTOMISED PASTRIES
-            ================================= */}
-            <div
-              className="product-card image-product-card customised-card"
-              style={{
-                backgroundImage: `url(${customImage})`,
-              }}
-            >
-              <div className="product-image-overlay">
-                <div className="product-text">
-                  <h3>Customised Pastries</h3>
-
-                  <p>
-                    Specially designed pastries created according to your
-                    requirements and occasion.
-                  </p>
-                </div>
-              </div>
-            </div>
+              <FaChevronRight />
+            </button>
           </div>
 
           <p className="scroll-hint">
-            ← Scroll horizontally to see more products →
+            Use the arrows to explore our products
           </p>
         </div>
       </section>
@@ -266,8 +341,8 @@ function App() {
           <h2>Place Your Order</h2>
 
           <p>
-            We make ordering easy. Contact us through WhatsApp, phone, email
-            or our website.
+            We make ordering easy. Contact us through WhatsApp,
+            phone, email or our website.
           </p>
 
           <div className="order-buttons">
@@ -283,7 +358,10 @@ function App() {
             </a>
 
             {/* Phone */}
-            <a href="tel:0645050305" className="btn">
+            <a
+              href="tel:0645050305"
+              className="btn"
+            >
               <FaPhone className="button-icon" />
               Call Us
             </a>
@@ -303,8 +381,8 @@ function App() {
               <h3>Delivery</h3>
 
               <p>
-                Delivery is available for customised pastries. Delivery fees
-                depend on the distance.
+                Delivery is available for customised pastries.
+                Delivery fees depend on the distance.
               </p>
             </div>
 
@@ -432,7 +510,6 @@ function App() {
                 06:00 - 14:30
               </p>
             </div>
-
           </div>
 
           {/* SOCIAL MEDIA */}
@@ -441,7 +518,7 @@ function App() {
 
             <div className="social-links">
 
-              {/* Instagram */}
+              {/* INSTAGRAM */}
               <a
                 href="https://www.instagram.com/bulelwas_bakery"
                 target="_blank"
@@ -452,7 +529,7 @@ function App() {
                 <span>Instagram</span>
               </a>
 
-              {/* Facebook */}
+              {/* FACEBOOK */}
               <a
                 href="https://www.facebook.com/share/1EhoaTEb7L/"
                 target="_blank"
@@ -463,7 +540,7 @@ function App() {
                 <span>Facebook</span>
               </a>
 
-              {/* WhatsApp */}
+              {/* WHATSAPP */}
               <a
                 href="https://wa.me/27645050305"
                 target="_blank"
@@ -490,12 +567,15 @@ function App() {
           />
         </div>
 
-        <h3>Bulelwa's Bakery &amp; Confectionery</h3>
+        <h3>
+          Bulelwa's Bakery &amp; Confectionery
+        </h3>
 
         <p>Freshly Baked With Love</p>
 
         <p className="copyright">
-          © 2008 Bulelwa's Bakery &amp; Confectionery. All Rights Reserved.
+          © 2008 Bulelwa's Bakery &amp; Confectionery.
+          All Rights Reserved.
         </p>
       </footer>
     </div>
