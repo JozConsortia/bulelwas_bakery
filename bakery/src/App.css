@@ -117,7 +117,7 @@ img {
 
   align-items: center;
 
-  gap: 28px;
+  gap: 24px;
 
   list-style: none;
 }
@@ -419,14 +419,10 @@ img {
 
   -webkit-overflow-scrolling: touch;
 
-  /* Hide scrollbar */
-
   scrollbar-width: none;
 
   -ms-overflow-style: none;
 }
-
-/* Chrome / Edge / Safari */
 
 .products-scroll::-webkit-scrollbar {
   display: none;
@@ -474,7 +470,7 @@ img {
 
   transform: scale(1.08);
 
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
 }
 
 .product-nav-button:active {
@@ -618,7 +614,7 @@ img {
 
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.90),
+    rgba(0, 0, 0, 0.9),
     rgba(0, 0, 0, 0.55),
     rgba(0, 0, 0, 0)
   );
@@ -740,14 +736,26 @@ img {
   background-color: #eeeeee;
 }
 
+.contact-intro {
+  max-width: 700px !important;
+
+  margin: 0 auto !important;
+
+  color: #666666;
+}
+
+/* ================================
+   CONTACT CARDS
+================================ */
+
 .contact-container {
   margin-top: 45px;
 
   display: grid;
 
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
-  gap: 18px;
+  gap: 22px;
 }
 
 .contact-card {
@@ -755,41 +763,50 @@ img {
 
   flex-direction: column;
 
-  justify-content: flex-start;
+  justify-content: center;
 
   align-items: center;
 
+  text-align: center;
+
   background-color: #ffffff;
 
-  padding: 28px 18px;
+  padding: 35px 20px;
 
-  min-height: 250px;
+  min-height: 240px;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
   border: 1px solid #dddddd;
 
   color: #555555;
 
-  transition: all 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
 
   border-color: #b8860b;
 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
 .clickable-card {
   cursor: pointer;
 }
 
-.contact-icon {
-  width: 60px;
+/* ================================
+   CONTACT ICON
+================================ */
 
-  height: 60px;
+.contact-icon {
+  width: 72px;
+
+  height: 72px;
 
   display: flex;
 
@@ -797,7 +814,7 @@ img {
 
   align-items: center;
 
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 
   border-radius: 50%;
 
@@ -805,7 +822,15 @@ img {
 
   color: #b8860b;
 
-  font-size: 27px;
+  font-size: 30px;
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1);
 }
 
 .whatsapp-icon {
@@ -816,34 +841,50 @@ img {
   color: #d4a017;
 }
 
+/* ================================
+   CONTACT TITLE
+================================ */
+
 .contact-card h3 {
   color: #b8860b;
 
-  font-size: 19px;
+  font-size: 21px;
 
   margin-bottom: 12px;
 }
 
-.contact-card p {
-  color: #666666;
+/* ================================
+   HIDDEN CONTACT DETAILS
+================================ */
+
+.contact-hidden {
+  color: #777777;
 
   font-size: 14px;
 
-  line-height: 1.7;
+  line-height: 1.6;
 
-  word-break: break-word;
+  margin: 0;
+
+  max-width: 200px;
 }
 
-.contact-action {
-  margin-top: auto;
+/* ================================
+   CONTACT ACTION
+================================ */
 
-  padding-top: 15px;
+.contact-action {
+  margin-top: 18px;
 
   color: #b8860b;
 
   font-size: 13px;
 
   font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
 }
 
 /* ================================
@@ -904,6 +945,176 @@ img {
 
 .social-links svg {
   font-size: 19px;
+}
+
+/* ================================
+   OPERATING HOURS SECTION
+================================ */
+
+.hours-section {
+  background-color: #ffffff;
+}
+
+.hours-intro {
+  max-width: 600px !important;
+
+  margin-left: auto !important;
+
+  margin-right: auto !important;
+}
+
+/* ================================
+   OPERATING HOURS CARD
+================================ */
+
+.hours-card {
+  max-width: 780px;
+
+  margin: 45px auto 0;
+
+  background-color: #f8f8f8;
+
+  border-radius: 18px;
+
+  border: 1px solid #dddddd;
+
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  text-align: left;
+}
+
+/* ================================
+   HOURS HEADER
+================================ */
+
+.hours-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 30px;
+
+  background-color: #f5f1e5;
+
+  border-bottom: 1px solid #e0d7be;
+}
+
+.hours-icon {
+  width: 65px;
+
+  height: 65px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background-color: #b8860b;
+
+  color: #ffffff;
+
+  font-size: 27px;
+}
+
+.hours-header h3 {
+  color: #b8860b;
+
+  font-size: 24px;
+
+  margin-bottom: 5px;
+}
+
+.hours-header p {
+  color: #666666;
+
+  font-size: 15px;
+}
+
+/* ================================
+   HOURS LIST
+================================ */
+
+.hours-list {
+  padding: 10px 30px;
+}
+
+.hours-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 22px 0;
+
+  border-bottom: 1px solid #dddddd;
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.day {
+  font-size: 17px;
+
+  font-weight: bold;
+
+  color: #555555;
+}
+
+.time {
+  font-size: 17px;
+
+  font-weight: bold;
+
+  color: #b8860b;
+}
+
+.time.closed {
+  color: #999999;
+}
+
+/* ================================
+   HOURS NOTE
+================================ */
+
+.hours-note {
+  margin: 10px 30px 30px;
+
+  padding: 20px;
+
+  border-left: 4px solid #b8860b;
+
+  background-color: #ffffff;
+
+  border-radius: 8px;
+}
+
+.hours-note strong {
+  display: block;
+
+  color: #b8860b;
+
+  font-size: 16px;
+
+  margin-bottom: 4px;
+}
+
+.hours-note p {
+  color: #666666;
+
+  font-size: 14px;
+
+  line-height: 1.6;
 }
 
 /* ================================
@@ -976,9 +1187,17 @@ footer p {
   }
 
   .contact-container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    gap: 17px;
   }
 }
+
+/* ================================
+   TABLET / SMALL LAPTOP
+================================ */
 
 @media (max-width: 800px) {
   .navbar {
@@ -1094,11 +1313,11 @@ footer p {
   }
 
   .nav-links {
-    gap: 12px;
+    gap: 10px;
   }
 
   .nav-links a {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .hero {
@@ -1213,9 +1432,31 @@ footer p {
     font-size: 12px !important;
   }
 
+  /* ================================
+     CONTACT MOBILE
+  ================================= */
+
   .contact-container {
     grid-template-columns: 1fr;
   }
+
+  .contact-card {
+    min-height: 220px;
+
+    padding: 30px 20px;
+  }
+
+  .contact-icon {
+    width: 65px;
+
+    height: 65px;
+
+    font-size: 27px;
+  }
+
+  /* ================================
+     ORDER MOBILE
+  ================================= */
 
   .order-information {
     grid-template-columns: 1fr;
@@ -1227,6 +1468,10 @@ footer p {
     max-width: 300px;
   }
 
+  /* ================================
+     SOCIAL MOBILE
+  ================================= */
+
   .social-links {
     flex-direction: column;
   }
@@ -1235,5 +1480,49 @@ footer p {
     width: 210px;
 
     text-align: center;
+  }
+
+  /* ================================
+     HOURS MOBILE
+  ================================= */
+
+  .hours-card {
+    margin-top: 35px;
+  }
+
+  .hours-header {
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 25px 20px;
+  }
+
+  .hours-list {
+    padding: 10px 20px;
+  }
+
+  .hours-row {
+    flex-direction: column;
+
+    gap: 6px;
+
+    text-align: center;
+
+    padding: 18px 0;
+  }
+
+  .day {
+    font-size: 16px;
+  }
+
+  .time {
+    font-size: 16px;
+  }
+
+  .hours-note {
+    margin: 10px 20px 20px;
+
+    text-align: left;
   }
 }

@@ -108,6 +108,10 @@ function App() {
           <li>
             <a href="#contact">Contact</a>
           </li>
+
+          <li>
+            <a href="#hours">Hours</a>
+          </li>
         </ul>
       </nav>
 
@@ -185,10 +189,9 @@ function App() {
           </p>
 
           {/* ================================
-              PRODUCT NAVIGATION AREA
+              PRODUCT NAVIGATION
           ================================= */}
           <div className="product-navigation">
-
             {/* LEFT ARROW */}
             <button
               type="button"
@@ -200,9 +203,7 @@ function App() {
               <FaChevronLeft />
             </button>
 
-            {/* ================================
-                PRODUCT SCROLL CONTAINER
-            ================================= */}
+            {/* PRODUCT SCROLL CONTAINER */}
             <div
               className="products-scroll"
               ref={productsRef}
@@ -324,10 +325,6 @@ function App() {
               <FaChevronRight />
             </button>
           </div>
-
-          <p className="scroll-hint">
-            Use the arrows to explore our products
-          </p>
         </div>
       </section>
 
@@ -346,7 +343,7 @@ function App() {
           </p>
 
           <div className="order-buttons">
-            {/* WhatsApp */}
+            {/* WHATSAPP */}
             <a
               href="https://wa.me/27645050305"
               target="_blank"
@@ -357,7 +354,7 @@ function App() {
               WhatsApp
             </a>
 
-            {/* Phone */}
+            {/* PHONE */}
             <a
               href="tel:0645050305"
               className="btn"
@@ -366,7 +363,7 @@ function App() {
               Call Us
             </a>
 
-            {/* Email */}
+            {/* EMAIL */}
             <a
               href="mailto:bulelwasbakeryconfectionery@gmail.com"
               className="btn"
@@ -404,12 +401,21 @@ function App() {
 
           <h2>Contact Us</h2>
 
-          <div className="contact-container">
+          <p className="contact-intro">
+            We would love to hear from you. Choose an option below
+            to get in touch with Bulelwa's Bakery.
+          </p>
 
+          {/* ================================
+              CONTACT CARDS
+          ================================= */}
+          <div className="contact-container">
             {/* PHONE */}
             <a
               href="tel:0645050305"
               className="contact-card clickable-card"
+              aria-label="Call Bulelwa's Bakery"
+              title="Call Bulelwa's Bakery"
             >
               <div className="contact-icon">
                 <FaPhone />
@@ -417,10 +423,12 @@ function App() {
 
               <h3>Phone</h3>
 
-              <p>064 505 0305</p>
+              <p className="contact-hidden">
+                Tap the button below to call us
+              </p>
 
               <span className="contact-action">
-                Tap to call
+                Call Us
               </span>
             </a>
 
@@ -430,6 +438,8 @@ function App() {
               target="_blank"
               rel="noreferrer"
               className="contact-card clickable-card"
+              aria-label="Contact Bulelwa's Bakery on WhatsApp"
+              title="Open WhatsApp"
             >
               <div className="contact-icon whatsapp-icon">
                 <FaWhatsapp />
@@ -437,10 +447,12 @@ function App() {
 
               <h3>WhatsApp</h3>
 
-              <p>064 505 0305</p>
+              <p className="contact-hidden">
+                Tap the button below to chat with us
+              </p>
 
               <span className="contact-action">
-                Chat with us
+                Chat With Us
               </span>
             </a>
 
@@ -448,6 +460,8 @@ function App() {
             <a
               href="mailto:bulelwasbakeryconfectionery@gmail.com"
               className="contact-card clickable-card"
+              aria-label="Email Bulelwa's Bakery"
+              title="Send us an email"
             >
               <div className="contact-icon">
                 <FaEnvelope />
@@ -455,12 +469,12 @@ function App() {
 
               <h3>Email</h3>
 
-              <p>
-                bulelwasbakeryconfectionery@gmail.com
+              <p className="contact-hidden">
+                Tap the button below to email us
               </p>
 
               <span className="contact-action">
-                Send us an email
+                Send Email
               </span>
             </a>
 
@@ -470,6 +484,8 @@ function App() {
               target="_blank"
               rel="noreferrer"
               className="contact-card clickable-card"
+              aria-label="Open Bulelwa's Bakery location in Google Maps"
+              title="Open Google Maps"
             >
               <div className="contact-icon location-icon">
                 <FaMapMarkerAlt />
@@ -477,53 +493,30 @@ function App() {
 
               <h3>Location</h3>
 
-              <p>
-                1484/17 Saint John Road,
-                <br />
-                Debonair Park,
-                <br />
-                The Evaton Estates, 1984
+              <p className="contact-hidden">
+                Tap the button below to view our location
               </p>
 
               <span className="contact-action">
                 Get Directions
               </span>
             </a>
-
-            {/* OPENING HOURS */}
-            <div className="contact-card">
-              <div className="contact-icon">
-                <FaClock />
-              </div>
-
-              <h3>Opening Hours</h3>
-
-              <p>
-                Monday - Friday
-                <br />
-                06:00 - 16:00
-              </p>
-
-              <p>
-                Saturday
-                <br />
-                06:00 - 14:30
-              </p>
-            </div>
           </div>
 
-          {/* SOCIAL MEDIA */}
+          {/* ================================
+              SOCIAL MEDIA
+          ================================= */}
           <div className="social-section">
             <h3>Follow Us</h3>
 
             <div className="social-links">
-
               {/* INSTAGRAM */}
               <a
                 href="https://www.instagram.com/bulelwas_bakery"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Visit our Instagram page"
+                title="Instagram"
               >
                 <FaInstagram />
                 <span>Instagram</span>
@@ -535,6 +528,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Visit our Facebook page"
+                title="Facebook"
               >
                 <FaFacebook />
                 <span>Facebook</span>
@@ -546,11 +540,86 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Contact us on WhatsApp"
+                title="WhatsApp"
               >
                 <FaWhatsapp />
                 <span>WhatsApp</span>
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* ================================
+          OPERATING HOURS SECTION
+      ================================= */}
+      <section id="hours" className="section hours-section">
+        <div className="section-content">
+          <p className="section-subtitle">WHEN TO VISIT</p>
+
+          <h2>Operating Hours</h2>
+
+          <p className="hours-intro">
+            We are open during the following hours.
+          </p>
+
+          <div className="hours-card">
+            <div className="hours-header">
+              <div className="hours-icon">
+                <FaClock />
+              </div>
+
+              <div>
+                <h3>Bulelwa's Bakery</h3>
+
+                <p>
+                  Come visit us during our business hours.
+                </p>
+              </div>
+            </div>
+
+            <div className="hours-list">
+              {/* MONDAY - FRIDAY */}
+              <div className="hours-row">
+                <div className="day">
+                  Monday - Friday
+                </div>
+
+                <div className="time">
+                  06:00 - 16:00
+                </div>
+              </div>
+
+              {/* SATURDAY */}
+              <div className="hours-row">
+                <div className="day">
+                  Saturday
+                </div>
+
+                <div className="time">
+                  06:00 - 14:30
+                </div>
+              </div>
+
+              {/* SUNDAY */}
+              <div className="hours-row">
+                <div className="day">
+                  Sunday
+                </div>
+
+                <div className="time closed">
+                  Closed
+                </div>
+              </div>
+            </div>
+
+            <div className="hours-note">
+              <strong>Need to order?</strong>
+
+              <p>
+                Contact us in advance for customised cakes and
+                special orders.
+              </p>
             </div>
           </div>
         </div>
