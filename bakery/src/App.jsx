@@ -4,7 +4,8 @@ import "./App.css";
 import logo from "../images/logo.jpeg";
 import cakeImage from "../images/cake.jpeg";
 import cookieImage from "../images/scones.jpeg";
-import customImage from "../images/custom.jpeg";
+import muffinsImage from "../images/muffins.png";
+import pastriesImage from "../images/pastries.png";
 
 import {
   FaWhatsapp,
@@ -279,22 +280,33 @@ function App() {
               </div>
 
               {/* MUFFINS */}
-              <div className="product-card">
-                <div className="product-icon">🧁</div>
+              <div
+                className="product-card image-product-card muffins-card"
+                style={{
+                  backgroundImage: `url(${muffinsImage})`,
+                }}
+              >
+                <div className="product-image-overlay">
+                  <div className="product-text">
+                    <span className="product-label">
+                      FRESHLY BAKED
+                    </span>
 
-                <h3>Muffins</h3>
+                    <h3>Muffins</h3>
 
-                <p>
-                  Soft and freshly baked muffins that are perfect for
-                  breakfast or a quick treat.
-                </p>
+                    <p>
+                      Soft and freshly baked muffins that are perfect for
+                      breakfast or a quick treat.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* CUSTOMISED PASTRIES */}
               <div
                 className="product-card image-product-card customised-card"
                 style={{
-                  backgroundImage: `url(${customImage})`,
+                  backgroundImage: `url(${pastriesImage})`,
                 }}
               >
                 <div className="product-image-overlay">
@@ -632,7 +644,7 @@ function App() {
         <div className="footer-logo">
           <img
             src={logo}
-            alt="Bulelwa's Bakery & Confectionery Logo"
+            alt="Bulelwa's Bakery & Confectionery"
           />
         </div>
 
