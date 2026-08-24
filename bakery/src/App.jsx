@@ -52,22 +52,64 @@ function App() {
 
   const productsRef = useRef(null);
 
+  // ==========================================
+  // NEXT PRODUCT - LOOPING
+  // ==========================================
+
   const scrollNext = () => {
-    if (productsRef.current) {
-      productsRef.current.scrollBy({
-        left: productsRef.current.clientWidth,
+    const container = productsRef.current;
+
+    if (!container) return;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const nextPosition = container.scrollLeft + container.clientWidth;
+
+    // If we are at the last product,
+    // go back to the first product.
+    if (nextPosition >= maxScrollLeft - 5) {
+      container.scrollTo({
+        left: 0,
         behavior: "smooth",
       });
+
+      return;
     }
+
+    container.scrollTo({
+      left: nextPosition,
+      behavior: "smooth",
+    });
   };
 
+  // ==========================================
+  // PREVIOUS PRODUCT - LOOPING
+  // ==========================================
+
   const scrollPrevious = () => {
-    if (productsRef.current) {
-      productsRef.current.scrollBy({
-        left: -productsRef.current.clientWidth,
+    const container = productsRef.current;
+
+    if (!container) return;
+
+    // If we are at the first product,
+    // jump to the last product.
+    if (container.scrollLeft <= 5) {
+      container.scrollTo({
+        left: container.scrollWidth - container.clientWidth,
         behavior: "smooth",
       });
+
+      return;
     }
+
+    const previousPosition = Math.max(
+      0,
+      container.scrollLeft - container.clientWidth
+    );
+
+    container.scrollTo({
+      left: previousPosition,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -257,7 +299,11 @@ function App() {
           </p>
 
           <div className="product-navigation">
-            {/* LEFT */}
+
+            {/* ========================================
+                LEFT BUTTON
+            ======================================== */}
+
             <button
               type="button"
               className="product-nav-button"
@@ -268,11 +314,15 @@ function App() {
               <FaChevronLeft />
             </button>
 
-            {/* PRODUCTS */}
+            {/* ========================================
+                PRODUCTS
+            ======================================== */}
+
             <div
               className="products-scroll"
               ref={productsRef}
             >
+
               {/* CAKES */}
               <div
                 className="product-card image-product-card"
@@ -412,9 +462,13 @@ function App() {
                   </div>
                 </div>
               </div>
+
             </div>
 
-            {/* RIGHT */}
+            {/* ========================================
+                RIGHT BUTTON
+            ======================================== */}
+
             <button
               type="button"
               className="product-nav-button"
@@ -424,6 +478,7 @@ function App() {
             >
               <FaChevronRight />
             </button>
+
           </div>
         </div>
       </section>
@@ -450,6 +505,7 @@ function App() {
           </p>
 
           <div className="order-buttons">
+
             <a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
@@ -475,9 +531,11 @@ function App() {
               <FaEnvelope />
               Email Us
             </a>
+
           </div>
 
           <div className="order-information">
+
             <div className="info-box">
               <div className="info-icon">
                 🚚
@@ -507,6 +565,7 @@ function App() {
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -517,6 +576,7 @@ function App() {
 
       <section id="contact" className="section contact-section">
         <div className="section-content">
+
           <p className="section-subtitle">
             GET IN TOUCH
           </p>
@@ -533,6 +593,7 @@ function App() {
           </p>
 
           <div className="contact-container">
+
             {/* PHONE */}
             <a
               href={`tel:${phoneNumber}`}
@@ -620,10 +681,12 @@ function App() {
                 Get Directions
               </span>
             </a>
+
           </div>
 
           {/* SOCIAL MEDIA */}
           <div className="social-section">
+
             <h3>
               Follow Bulelwa's Bakery
             </h3>
@@ -634,6 +697,7 @@ function App() {
             </p>
 
             <div className="social-links">
+
               <a
                 href="https://www.instagram.com/bulelwas_bakery?igsi=Z3RlcDY2NTgycG95"
                 target="_blank"
@@ -660,8 +724,10 @@ function App() {
                 <FaWhatsapp />
                 <span>WhatsApp</span>
               </a>
+
             </div>
           </div>
+
         </div>
       </section>
 
@@ -671,6 +737,7 @@ function App() {
 
       <section id="hours" className="section hours-section">
         <div className="section-content">
+
           <p className="section-subtitle">
             WHEN TO VISIT
           </p>
@@ -686,7 +753,9 @@ function App() {
           </p>
 
           <div className="hours-card">
+
             <div className="hours-header">
+
               <div className="hours-icon">
                 <FaClock />
               </div>
@@ -700,9 +769,11 @@ function App() {
                   We look forward to serving you.
                 </p>
               </div>
+
             </div>
 
             <div className="hours-list">
+
               <div className="hours-row">
                 <div className="day">
                   Monday - Friday
@@ -732,9 +803,11 @@ function App() {
                   Closed
                 </div>
               </div>
+
             </div>
 
             <div className="hours-note">
+
               <strong>
                 Special Orders
               </strong>
@@ -743,7 +816,9 @@ function App() {
                 Please contact us in advance for customised
                 cakes and pastries.
               </p>
+
             </div>
+
           </div>
         </div>
       </section>
@@ -753,7 +828,9 @@ function App() {
       ========================================== */}
 
       <footer>
+
         <div className="footer-top">
+
           <img
             src={logo}
             alt={`${bakeryName} Logo`}
@@ -767,11 +844,13 @@ function App() {
           <p>
             Freshly Baked With Love
           </p>
+
         </div>
 
         <div className="footer-divider"></div>
 
         <div className="footer-contact">
+
           <a href={`tel:${phoneNumber}`}>
             <FaPhone />
             {phoneNumber}
@@ -781,6 +860,7 @@ function App() {
             <FaEnvelope />
             {emailAddress}
           </a>
+
         </div>
 
         <p className="footer-address">
@@ -789,6 +869,7 @@ function App() {
         </p>
 
         <div className="footer-social">
+
           <a
             href="https://www.instagram.com/bulelwas_bakery?igsi=Z3RlcDY2NTgycG95"
             target="_blank"
@@ -815,12 +896,14 @@ function App() {
           >
             <FaWhatsapp />
           </a>
+
         </div>
 
         <p className="copyright">
           © 2008 Bulelwa's Bakery &amp; Confectionery.
           All Rights Reserved.
         </p>
+
       </footer>
     </div>
   );
