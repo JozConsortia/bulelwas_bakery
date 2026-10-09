@@ -44,6 +44,25 @@ body {
 
 .app {
   overflow-x: hidden;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each page fills the space between the navbar and footer */
+.page {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stretch the last section so its background reaches the
+   footer on short pages, instead of leaving a white gap. */
+.page > section:last-child {
+  flex: 1;
 }
 
 a {
@@ -84,6 +103,8 @@ img {
   display: flex;
   align-items: center;
   gap: 13px;
+
+  color: inherit;
 }
 
 .logo-image {
@@ -146,6 +167,10 @@ img {
   list-style: none;
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .nav-links a {
   color: var(--grey-dark);
 
@@ -174,11 +199,13 @@ img {
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--gold);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
 
@@ -1484,12 +1511,775 @@ footer p {
 }
 
 /* =========================================================
+   FOUNDER TEASER (HOME)
+========================================================= */
+
+.founder-teaser {
+  padding: 70px 7%;
+
+  text-align: center;
+
+  background: var(--cream-dark);
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.founder-teaser blockquote {
+  max-width: 760px;
+
+  margin: 0 auto 14px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 26px;
+
+  font-style: italic;
+
+  line-height: 1.5;
+
+  color: var(--grey-dark);
+}
+
+.founder-teaser-name {
+  color: var(--gold);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 18px;
+}
+
+.founder-teaser-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--grey-dark);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  border-bottom: 2px solid var(--gold-light);
+
+  padding-bottom: 3px;
+
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.founder-teaser-link:hover {
+  color: var(--gold);
+
+  gap: 12px;
+}
+
+/* =========================================================
+   FOUNDER MESSAGE (ABOUT)
+========================================================= */
+
+.founder-section {
+  background: var(--white);
+}
+
+.founder-letter {
+  position: relative;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: left;
+
+  background: var(--cream);
+
+  border: 1px solid var(--border);
+
+  border-top: 4px solid var(--gold);
+
+  border-radius: var(--radius);
+
+  padding: 50px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.founder-letter > p {
+  color: var(--grey);
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  margin-bottom: 30px;
+}
+
+.founder-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.founder-monogram {
+  width: 72px;
+  height: 72px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+
+  color: var(--white);
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.25);
+}
+
+.founder-header > div {
+  min-width: 0;
+
+  overflow-wrap: break-word;
+}
+
+.founder-header h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 24px;
+
+  color: var(--grey-dark);
+}
+
+.founder-header p {
+  color: var(--grey-light);
+
+  font-size: 14px;
+}
+
+.founder-quote-icon {
+  position: absolute;
+
+  top: 40px;
+  right: 50px;
+
+  font-size: 64px;
+
+  color: var(--gold-soft);
+}
+
+.founder-letter > p.founder-greeting {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 14px;
+}
+
+.founder-panels {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 22px;
+
+  margin-bottom: 35px;
+}
+
+.founder-panel {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  padding: 26px;
+}
+
+.founder-panel-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+
+  font-size: 18px;
+
+  margin-bottom: 14px;
+}
+
+.founder-panel h4 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 19px;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 10px;
+}
+
+.founder-panel p {
+  color: var(--grey);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+/* Download button and partner link, pinned to the panel bottom */
+.founder-panel-actions {
+  margin-top: auto;
+
+  padding-top: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 12px 20px;
+}
+
+.founder-download {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  border: 1.5px solid var(--gold);
+
+  border-radius: 10px;
+
+  color: var(--gold);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.founder-download:hover,
+.founder-download:focus-visible {
+  background: var(--gold);
+
+  color: var(--white);
+}
+
+.founder-panel-link {
+  margin-top: 10px;
+
+  color: var(--gold);
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.founder-panel-link:hover {
+  text-decoration: underline;
+}
+
+.founder-pull-quote {
+  margin: 0 0 35px;
+
+  padding: 6px 0 6px 24px;
+
+  border-left: 3px solid var(--gold);
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 22px;
+
+  font-style: italic;
+
+  line-height: 1.5;
+
+  color: var(--grey-dark);
+}
+
+.founder-signoff p {
+  color: var(--grey);
+
+  font-size: 15px;
+
+  margin-bottom: 4px;
+}
+
+.founder-signature {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 30px;
+
+  font-style: italic;
+
+  color: var(--gold);
+}
+
+/* =========================================================
+   SPECIALTIES (HOME)
+========================================================= */
+
+.specialties-section {
+  background: var(--white);
+}
+
+.specialties-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 28px;
+}
+
+.specialty-card {
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow-soft);
+
+  color: inherit;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.specialty-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: var(--shadow-card);
+}
+
+.specialty-image {
+  height: 300px;
+
+  background-size: cover;
+
+  background-position: center;
+
+  transition: transform 0.6s ease;
+}
+
+.specialty-card:hover .specialty-image {
+  transform: scale(1.04);
+}
+
+.specialty-body {
+  position: relative;
+
+  padding: 26px 28px 30px;
+
+  background: var(--white);
+}
+
+.specialty-body h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 28px;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 8px;
+}
+
+.specialty-body p {
+  color: var(--grey);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   OCCASIONS (HOME)
+========================================================= */
+
+.occasions-section {
+  background: var(--cream);
+}
+
+.occasion-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+
+  list-style: none;
+
+  max-width: 960px;
+
+  margin: 0 auto 45px;
+
+  padding: 0;
+}
+
+.occasion-tile {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 28px 16px 24px;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.occasion-tile:hover,
+.occasion-tile:focus-visible {
+  transform: translateY(-5px);
+
+  border-color: rgba(184, 134, 11, 0.45);
+
+  box-shadow: var(--shadow-card);
+}
+
+.occasion-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+
+  font-size: 22px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.occasion-tile:hover .occasion-icon,
+.occasion-tile:focus-visible .occasion-icon {
+  background: var(--gold);
+
+  color: var(--white);
+}
+
+.occasion-name {
+  color: var(--grey-dark);
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-align: center;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   PRODUCTS CALL TO ACTION
+========================================================= */
+
+.products-cta {
+  margin-top: 55px;
+}
+
+.products-cta p {
+  color: var(--grey);
+
+  font-size: 16px;
+
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   FUNCTIONS PAGE
+========================================================= */
+
+.functions-section {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      var(--cream) 100%
+    );
+}
+
+.functions-intro {
+  max-width: 760px;
+
+  margin: 0 auto 45px;
+
+  color: var(--grey);
+
+  font-size: 17px;
+
+  line-height: 1.9;
+}
+
+.functions-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 22px;
+}
+
+.function-card {
+  text-align: left;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  padding: 26px;
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.function-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(184, 134, 11, 0.45);
+}
+
+.function-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: var(--gold-soft);
+
+  color: var(--gold);
+
+  font-size: 20px;
+
+  margin-bottom: 16px;
+}
+
+.function-card h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 18px;
+
+  line-height: 1.3;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 8px;
+}
+
+.function-card p {
+  color: var(--grey);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.function-steps-section {
+  background: var(--white);
+}
+
+.function-steps {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  margin-bottom: 30px;
+}
+
+.function-step {
+  text-align: left;
+
+  background: var(--cream);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  padding: 30px;
+}
+
+.function-step h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 20px;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 8px;
+}
+
+.function-step p {
+  color: var(--grey);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+.function-steps-note {
+  color: var(--grey);
+
+  font-size: 15px;
+
+  margin-bottom: 25px;
+}
+
+/* =========================================================
+   ORDER FUNCTION BANNER
+========================================================= */
+
+.order-function-banner {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 25px;
+
+  text-align: left;
+
+  max-width: 900px;
+
+  margin: 40px auto;
+
+  padding: 30px 35px;
+
+  background: var(--gold-soft);
+
+  border: 1px solid rgba(184, 134, 11, 0.3);
+
+  border-radius: var(--radius);
+}
+
+.order-function-banner h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 22px;
+
+  color: var(--grey-dark);
+
+  margin-bottom: 6px;
+}
+
+.order-function-banner p {
+  color: var(--grey-dark);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+.order-function-banner .btn {
+  flex-shrink: 0;
+}
+
+/* =========================================================
    TABLET
 ========================================================= */
 
 @media (max-width: 1100px) {
+  .functions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .nav-links {
     gap: 17px;
+  }
+
+  .navbar {
+    padding: 12px 4%;
   }
 
   .contact-container {
@@ -1506,30 +2296,144 @@ footer p {
 }
 
 /* =========================================================
+   MENU (PHONES & TABLETS)
+========================================================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    min-height: 72px;
+
+    padding: 10px 20px;
+  }
+
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu-toggle {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: var(--white);
+
+    color: var(--gold);
+
+    font-size: 20px;
+
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 8px 20px 16px;
+
+    background: var(--white);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 18px 30px rgba(70, 60, 40, 0.12);
+
+    max-height: calc(100vh - 72px);
+
+    overflow-y: auto;
+  }
+
+  .menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links li + li {
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .nav-links a {
+    display: block;
+
+    padding: 14px 6px;
+
+    font-size: 16px;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links a.active {
+    padding-left: 14px;
+
+    border-left: 3px solid var(--gold);
+  }
+}
+
+/* =========================================================
    TABLET / SMALL LAPTOP
 ========================================================= */
 
 @media (max-width: 800px) {
-  .navbar {
+  .specialties-grid,
+  .function-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .specialty-image {
+    height: 230px;
+  }
+
+  .order-function-banner {
     flex-direction: column;
 
-    gap: 14px;
+    align-items: stretch;
 
-    padding: 12px 5%;
+    text-align: center;
+
+    padding: 26px 22px;
   }
 
-  .brand {
-    justify-content: center;
+  .founder-panels {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .nav-links {
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px 18px;
+  .founder-letter {
+    padding: 32px 22px;
   }
 
+  /* The decorative quote mark overlaps the founder's name on narrow screens. */
+  .founder-quote-icon {
+    display: none;
+  }
+
+  .founder-teaser blockquote {
+    font-size: 21px;
+  }
+
+  .founder-pull-quote {
+    font-size: 19px;
+  }
   .hero {
     min-height: 80vh;
 
@@ -1578,6 +2482,31 @@ footer p {
 ========================================================= */
 
 @media (max-width: 600px) {
+  .occasion-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+  .occasion-tile {
+    padding: 22px 12px 18px;
+  }
+
+  .occasion-icon {
+    width: 50px;
+    height: 50px;
+
+    font-size: 19px;
+  }
+
+  .occasion-name {
+    font-size: 15px;
+  }
+
+  .functions-grid {
+    grid-template-columns: 1fr;
+  }
+
   .navbar {
     padding: 12px 18px;
   }
@@ -1594,14 +2523,6 @@ footer p {
 
   .brand-sub {
     font-size: 12px;
-  }
-
-  .nav-links {
-    gap: 8px 12px;
-  }
-
-  .nav-links a {
-    font-size: 11px;
   }
 
   .hero {
@@ -1663,21 +2584,39 @@ footer p {
   ======================================== */
 
   .product-navigation {
-    gap: 7px;
+    position: relative;
   }
 
   .products-scroll {
     gap: 12px;
 
-    max-width: calc(100vw - 100px);
+    max-width: 100%;
   }
 
   .product-nav-button {
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 5;
+
     width: 42px;
 
     height: 42px;
 
+    margin-top: -21px;
+
     font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .product-nav-button:first-child {
+    left: 8px;
+  }
+
+  .product-nav-button:last-child {
+    right: 8px;
   }
 
   .product-card {
@@ -1760,5 +2699,152 @@ footer p {
 
   .footer-address {
     line-height: 1.6;
+  }
+
+  .footer-contact a,
+  .footer-address {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+
+    text-align: center;
+  }
+
+  .footer-contact a {
+    padding: 8px 0;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+  .founder-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .footer-contact a {
+    font-size: 12.5px;
+  }
+
+  .brand-main {
+    font-size: 17px;
+  }
+
+  .hero h1 {
+    font-size: 31px;
+  }
+
+  .section h2 {
+    font-size: 28px;
+  }
+
+  .founder-panel {
+    padding: 22px 18px;
+  }
+
+  .founder-letter {
+    padding: 28px 16px;
+  }
+}
+
+/* =========================================================
+   PHONES IN LANDSCAPE
+   Short screens: keep the hero compact so the welcome
+   text and buttons are visible without scrolling far.
+========================================================= */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: auto;
+
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+
+  .hero-logo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .hero-logo-container {
+    margin-bottom: 14px;
+  }
+}
+
+/* =========================================================
+   TINY PHONES (e.g. Galaxy Fold folded)
+========================================================= */
+
+@media (max-width: 300px) {
+  .brand {
+    gap: 9px;
+  }
+
+  .logo-image {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand-main {
+    font-size: 15px;
+  }
+
+  .brand-sub {
+    font-size: 11px;
+
+    letter-spacing: 0.3px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .section h2 {
+    font-size: 25px;
+  }
+}
+
+/* =========================================================
+   TOUCH SCREENS
+   Hover lifts get stuck after a tap on phones and tablets,
+   so only animate them where a real mouse is used.
+========================================================= */
+
+@media (hover: none) {
+  .btn:hover,
+  .about-box:hover,
+  .function-card:hover,
+  .occasion-tile:hover,
+  .specialty-card:hover,
+  .contact-card:hover,
+  .product-nav-button:hover {
+    transform: none;
+  }
+
+  .specialty-card:hover .specialty-image {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
